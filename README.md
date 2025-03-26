@@ -105,3 +105,16 @@ Jika hanya menggunakan `Model` tanpa memisahkan `Service` dan `Repository`, maka
 Ya, saya sudah mengeksplorasi Postman dan menurut saya alat ini sangat membantu karena saya bisa menjalankan HTTP request seperti GET dan POST tanpa perlu membuat antarmuka pengguna (UI) terlebih dahulu. Dengan Postman, saya bisa langsung berinteraksi dengan API yang saya buat, menguji respons, dan memastikan endpoint berjalan dengan benar. Fitur yang menurut saya paling menarik adalah kemampuannya untuk melihat Body, Cookies, dan Header secara langsung, sehingga saya bisa memahami dengan jelas bagaimana data berpindah antara client dan server. Hal ini sangat relevan dan akan sangat membantu untuk proyek-proyek saya di masa depan, terutama jika saya mengembangkan sistem berbasis REST API atau layanan yang melibatkan komunikasi antar server.
 
 #### Reflection Publisher-3
+> Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+Tutorial ini menggunakan Push Model dari Observer Pattern karena publisher secara langsung mengirimkan data notifikasi lengkap ke setiap subscriber. Hal ini terlihat saat method update() dipanggil, masing-masing subscriber menerima payload notifikasi secara langsung dan mereka tidak perlu mengambil data sendiri dari publisher.
+
+> What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+Jika menggunakan Pull Model dalam kasus tutorial ini, keuntungannya adalah subscriber memiliki kontrol lebih terhadap kapan dan bagaimana mereka mengambil data. Hal ini memungkinkan mereka mengambil data secara selektif, sehingga sistem menjadi lebih efisien dalam menangani notifikasi yang tidak selalu relevan.
+
+Namun, kekurangannya adalah kompleksitas sistem menjadi lebih tinggi karena setiap subscriber harus secara aktif mengambil data dari publisher. Ini dapat menambah beban kepada server jika banyak subscriber melakukan permintaan data secara bersamaan.
+
+> Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+Jika tidak menggunakan multi-threading, maka notifikasi akan dikirim ke setiap subscriber secara satu per satu. Artinya, subscriber berikutnya hanya akan menerima notifikasi setelah pengiriman ke subscriber sebelumnya selesai. Hal ini dapat menyebabkan proses pengiriman menjadi lambat, terutama jika jumlah subscriber sangat banyak.
