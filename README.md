@@ -92,4 +92,16 @@ Ya, kita tetap memerlukan `DashMap`, meskipun sudah menggunakan design singleton
 
 #### Reflection Publisher-2
 
+> In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+Kita perlu memisahkan Service dan Repository dari Model agar untuk menerapkan Single Responsibility Principle (SRP). Dengan pemisahan ini, setiap komponen hanya menangani satu tanggung jawab: Model untuk data, Repository untuk akses data, dan Service untuk logika bisnis. Ini membuat sistem lebih terstruktur, mudah diuji, dan dirawat.
+
+> What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+Jika hanya menggunakan `Model` tanpa memisahkan `Service` dan `Repository`, maka setiap model seperti `Program`, `Subscriber`, dan `Notification` harus menangani terlalu banyak tanggung jawab sekaligus, mulai dari menyimpan data, menjalankan logika bisnis, hingga mengatur interaksi antar model. Hal ini melanggar prinsip Single Responsibility dan akan meningkatkan kompleksitas kode karena logika seperti mengirim notifikasi saat Program dibuat atau dihapus akan bercampur langsung di dalam Model. Akibatnya, model menjadi sulit dipahami, sulit di-test secara terpisah.
+
+> Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+Ya, saya sudah mengeksplorasi Postman dan menurut saya alat ini sangat membantu karena saya bisa menjalankan HTTP request seperti GET dan POST tanpa perlu membuat antarmuka pengguna (UI) terlebih dahulu. Dengan Postman, saya bisa langsung berinteraksi dengan API yang saya buat, menguji respons, dan memastikan endpoint berjalan dengan benar. Fitur yang menurut saya paling menarik adalah kemampuannya untuk melihat Body, Cookies, dan Header secara langsung, sehingga saya bisa memahami dengan jelas bagaimana data berpindah antara client dan server. Hal ini sangat relevan dan akan sangat membantu untuk proyek-proyek saya di masa depan, terutama jika saya mengembangkan sistem berbasis REST API atau layanan yang melibatkan komunikasi antar server.
+
 #### Reflection Publisher-3
